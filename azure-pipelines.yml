@@ -42,7 +42,7 @@ stages:
         Contents: '**/target/*.?(war|jar)'
         TargetFolder: $(Build.ArtifactStagingDirectory)
 
-    - upload: $(Build.ArtifactStagingDirectory)
+    - publish: $(Build.ArtifactStagingDirectory)
       artifact: drop
 
 - stage: Deploy
@@ -65,4 +65,4 @@ stages:
               azureSubscription: $(azureSubscription)
               appType: webAppLinux
               appName: $(webAppName)
-              package: '$(Pipeline.Workspace)/drop/**/target/*.?(war|jar)'
+              package: '$(Pipeline.Workspace)/drop/**/*.jar'
